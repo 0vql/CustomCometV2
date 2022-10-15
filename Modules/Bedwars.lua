@@ -1,16 +1,10 @@
-repeat task.wait() until game:IsLoaded()
 task.wait(0.5)
-local BwGames = {6872274481,8444591321,8560631822}
-if not table.find(BwGames,game.PlaceId) then
-    warn("[CometV2] Game not Supported!")
-    return
-end
 shared["CometConfigs"] = {
     StrokeTransparency = 0.75,
     Color = Color3.fromRGB(255,65,65),
     Enabled = false
 }
-local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/eLeCtRaDoMiNuS/CustomCometV2/main/GuiLibrary.lua"))()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ham-135/CometV2/main/GuiLibrary.lua"))()
 local getasset = getsynasset or getcustomasset
 local ScreenGuitwo = game:GetService("CoreGui").RektskyNotificationGui
 local lplr = game:GetService("Players").LocalPlayer
@@ -216,7 +210,7 @@ runcode(function()
         ["Name"] = "Value",
         ["Function"] = function() end,
         ["Min"] = 1,
-        ["Max"] = 25,
+        ["Max"] = 18,
         ["Default"] = 18,
     })
 end)
@@ -1340,11 +1334,15 @@ runcode(function()
 end)
 
 runcode(function()
-    local dinoexploit = Tabs["Blatant"]:CreateToggle({
+    local Enabled = false
+    local DinoExploit = Tabs["Exploits"]:CreateToggle({
         ["Name"] = "DinoExploit",
         ["Callback"] = function(Callback)
-            game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events").useAbility:FireServer("dino_charge")
-            CreateNotification("Comet V2","You Need to wait 60 seconds to use it again",15)
+            Enabled = Callback
+            if Enabled then
+                lib["ToggleFuncs"]["DinoExploit"](true)
+                game:GetService("ReplicatedStorage"):FindFirstChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events").useAbility:FireServer("dino_charge")
+            end
         end
     })
 end)
@@ -1352,7 +1350,7 @@ end)
 task.delay(0.5, function()
     CreateNotification("Comet V2","Comet V2 Loaded! Hope you enjoy! discord.gg/fJNbvucPS5",15)
     game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
-        Text = "Comet V2 Loaded!\nMade by Ham135 and Car (Also on YT)!\ndiscord.gg/fJNbvucPS5",
+        Text = "Comet V2 Loaded!\nMade by Ham135 and Car and npm (no cap)(Also on YT)!\ndiscord.gg/fJNbvucPS5",
         Color = Color3.fromRGB(255,65,65),
         Font = Enum.Font.SourceSansBold
     })
