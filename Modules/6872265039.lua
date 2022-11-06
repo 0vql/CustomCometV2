@@ -203,11 +203,4 @@ runcode(function()
     })
 end)
 
-task.delay(0.5, function()
-    CreateNotification("Comet V2","Custom Comet V2 Loaded!",15)
-    game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
-        Text = "Comet V2 Offically made by Ham135, custom modules made by npm",
-        Color = Color3.fromRGB(255,65,65),
-        Font = Enum.Font.SourceSansBold
-    })
-end)
+
